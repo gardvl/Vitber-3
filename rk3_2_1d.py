@@ -96,7 +96,7 @@ plt.grid()
 
 plt.subplot(1, 2, 2)
 plt.plot(alpha_list, accepted_list, 'o-', label='accepted')
-plt.plot(alpha_list, rejected_list, 'o-', label='discarded')
+plt.plot(alpha_list, rejected_list, 'o', label='discarded')
 plt.plot(alpha_list, total_list, 'o-', label='total')
 
 plt.xlabel('alpha')

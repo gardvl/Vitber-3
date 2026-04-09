@@ -35,6 +35,7 @@ def rk3_2(x_span, y_n, h_0, tol, f, alpha):
         
         if est < tol:
             x_n += h
+            
             y_n = y_n1
             k1 = k4
 
