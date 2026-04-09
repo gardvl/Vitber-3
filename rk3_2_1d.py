@@ -18,6 +18,10 @@ def rk3_2(x_span, y_n, h_0, tol, f, alpha):
     y_values = [y_n]
     h_values = [h_0]
 
+    n_steps_tot = 0
+    n_steps_accepted = 0
+    n_steps_rejected = 0
+
     x_n = x_span[0]
     x_end = x_span[1]
     h = h_0
@@ -42,27 +46,64 @@ def rk3_2(x_span, y_n, h_0, tol, f, alpha):
 
             x_values.append(x_n)
             y_values.append(y_n)
-            h_values.append(h)  
+            h_values.append(h) 
+
+            n_steps_accepted += 1
+        else:
+            n_steps_rejected += 1 
             
         h_new = alpha * h * (tol/est)**(1/3)
         h = h_new
+        n_steps_tot += 1
+
     return (np.array(x_values),
             np.array(y_values),
-            np.array(h_values))
+            np.array(h_values),
+            n_steps_tot,
+            n_steps_accepted,
+            n_steps_rejected)
 
 tol_list = np.logspace(-8, -2,50)
 errors = []
 
 for tol in tol_list:
-    x_values, y_values, h_values = rk3_2(x_span, y_0, h_0 , tol, f, alpha)
+    x_values, y_values, h_values, n_steps_tot, n_steps_accepted, n_steps_rejected = rk3_2(x_span, y_0, h_0 , tol, f, alpha)
     y_exact = real_solution(x_values).T
     error_total = np.max(np.abs(y_values - y_exact))
     errors.append(error_total)
 
-plt.figure()
+alpha_list = np.linspace(0.01,0.99,50)
+
+accepted_list = []
+rejected_list = []
+total_list = []
+
+for alpha in alpha_list:
+    x_values, y_values, h_values, n_steps_tot, n_steps_accepted, n_steps_rejected = rk3_2(x_span, y_0, h_0 , tol_list[25], f, alpha)
+    accepted_list.append(n_steps_accepted)
+    rejected_list.append(n_steps_rejected)
+    total_list.append(n_steps_tot)
+
+plt.figure(figsize=(12, 5))
+
+plt.subplot(1, 2, 1)
 plt.loglog(tol_list, errors, 'o-')
+
 plt.xlabel('tol')
 plt.ylabel('error')
 plt.title('Error vs tolerance')
 plt.grid()
+
+plt.subplot(1, 2, 2)
+plt.plot(alpha_list, accepted_list, 'o-', label='accepted')
+plt.plot(alpha_list, rejected_list, 'o-', label='discarded')
+plt.plot(alpha_list, total_list, 'o-', label='total')
+
+plt.xlabel('alpha')
+plt.ylabel('number of time steps')
+plt.title('Number of time steps vs alpha')
+plt.legend()
+plt.grid()
+
+plt.tight_layout()
 plt.show()
