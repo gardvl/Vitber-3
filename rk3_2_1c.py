@@ -48,7 +48,7 @@ def rk3_2(x_span, y_n, h_0, tol, f, alpha):
     return (np.array(x_values),
             np.array(y_values),
             np.array(h_values))
-
+'''
 x_values, y_values, h_values = rk3_2(x_span, y_0, h_0 , tol, f, alpha)
 
 plt.figure(figsize=(12, 6))
@@ -72,3 +72,4 @@ plt.title('Step Size Evolution')
 plt.tight_layout()
 plt.show()
 
+'''

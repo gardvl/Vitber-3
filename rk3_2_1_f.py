@@ -5,7 +5,6 @@ import rk3_2_1c as opg1c
 
 
 #Parameters
-y_0 = np.array([0,2])
 tol = 10e-7
 alpha = 0.8
 x_span = [0 ,2*np.pi]
@@ -29,7 +28,7 @@ def secant_RK(RK,b_0,b_1,b_tol, x_span, h_0, tol, alpha):
 
     while abs(b_1-b_0) > b_tol:
 
-        b_2 = (b_0*y_list_list[-1][-1] - b_1*y_list_list[-2][-1]) / (y_list_list[-1][-1] - y_list_list[-2][-1])
+        b_2 = (b_0*y_list_list[-1][-1][0] - b_1*y_list_list[-2][-1][0]) / (y_list_list[-1][-1][0] - y_list_list[-2][-1][0])
 
         b_0 = b_1
         b_1 = b_2
@@ -38,6 +37,18 @@ def secant_RK(RK,b_0,b_1,b_tol, x_span, h_0, tol, alpha):
         x_list_list.append(x_vals)
         y_list_list.append(y_vals)
         h_list_list.append(h_vals)
+    
     return x_list_list, y_list_list, h_list_list
 
 
+x_list_list, y_list_list, h_list_list = secant_RK(opg1c.rk3_2,-3,3,1e-7, x_span, h_0, tol, alpha)
+
+fig1 = plt.figure(figsize=(12,6))
+for i in range(len(x_list_list)):
+    y_vals = [y_vec[0] for y_vec in y_list_list[i]]
+    plt.plot(x_list_list[i], y_vals, label = f"Iterasjon {i}")
+plt.legend()
+plt.grid()
+plt.xlabel("x")
+plt.ylabel("y")
+plt.show()
