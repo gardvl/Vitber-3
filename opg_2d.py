@@ -4,7 +4,7 @@ import opg_2b
 import opg_2c
 
 
-def usadel_1d(v,epsilon):
+def usadel_eq_1d(v,epsilon):
     gamma, gamma_tilde, omega, omega_tilde = opg_2c.one_vec_to_four_M(v)
 
     I = np.identity(2, dtype=complex)
