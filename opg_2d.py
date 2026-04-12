@@ -5,7 +5,7 @@ import opg_2c
 
 
 def usadel_1d(v,epsilon):
-    gamma, gamma_tilde, omega, omega_tilde = opg_2c.vec_to_four_M(v)
+    gamma, gamma_tilde, omega, omega_tilde = opg_2c.one_vec_to_four_M(v)
 
     I = np.identity(2, dtype=complex)
     N = np.linalg.inv(I-gamma @ gamma_tilde)
