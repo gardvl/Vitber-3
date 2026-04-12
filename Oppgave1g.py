@@ -12,7 +12,7 @@ alpha = 0.8
 def g(x,y):
     return np.array([y[1], y[0]+np.sin(x)])
 
-
+'''
 x_list_list, y_list_list, h_list_list = opg1f.secant_RK(opg1c.rk3_2,-3,4,1e-7, x_span, h_0, tol,g, alpha)
 
 y_vals = y_list_list[-1]
@@ -23,3 +23,4 @@ plt.xlabel("x")
 plt.ylabel("y")
 plt.title("Boundary value problem")
 plt.show()
+'''
