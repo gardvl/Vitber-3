@@ -24,6 +24,7 @@ def vec_to_Matrix(m):
             k += 1
 
     return M
+
 '''
 
 M = np.array([[1+2j, 3+4j],
