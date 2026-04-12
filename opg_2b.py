@@ -1,15 +1,5 @@
 import numpy as np
 
-def Matrix_to_vec(M):
-    m = []
-    for i in range(M.shape[0]):
-        for j in range(M.shape[1]):
-            m.append(np.real(M[i,j]))
-    for i in range(M.shape[0]):
-        for j in range(M.shape[1]):
-            m.append(np.imag(M[i,j]))
-    return np.array(m)
-
 def vector_combine(m1, m2, m3, m4):
     return np.concatenate([m1, m2, m3, m4])
 
@@ -19,6 +9,8 @@ def vector_uncombine(m):
     m3 = m[16:24]   
     m4 = m[24:32]
     return m1, m2, m3, m4
+
+'''
 
 m1 = [1,2,3,4,5,6,7,8]
 m2 = [1,2,3,4,5,6,7,8]
@@ -32,3 +24,5 @@ print(np.allclose(m1, m1_))
 print(np.allclose(m2, m2_))
 print(np.allclose(m3, m3_))
 print(np.allclose(m4, m4_))
+
+'''
