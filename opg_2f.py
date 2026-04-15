@@ -9,4 +9,5 @@ def usadel_boundary(v_left, v_right, epsilon, gamma_left, gamma_thilde_left, gam
     N_L = np.linalg.inv((np.identity(2, dtype = complex)-gamma_left(epsilon) @ gamma_thilde_left(epsilon)))
     N_thilde_L = np.linalg.inv((np.identity(2, dtype = complex)-gamma_thilde_left(epsilon) @ gamma_left(epsilon)))
 
-    m1 = omega_0 + 1/(l*zeta)*(np.identity(2, dtype=complex)-gamma_0 @ gamma_left(epsilon))
+    m1 = omega_0 + 1/(l*zeta)*(np.identity(2, dtype=complex)-gamma_0 @ gamma_thilde_left(epsilon)) @ N_L @ (gamma_l - gamma_left(epsilon))
+    m2 = omega_thilde_0 + 1/(zeta*l)*(np.identity(2, dtype= complex)-gamma_thilde_0 @ gamma_left)
