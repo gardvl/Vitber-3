@@ -1,5 +1,6 @@
 import numpy as np
 from scipy.integrate import solve_bvp
+import matplotlib.pyplot as plt
 import opg_2e as opg2e
 import opg_2f as opg2f
 
@@ -32,3 +33,18 @@ zeta = 3
 l = 1
 m = 101
 eps_list = [0,1,2]
+
+solutions = usadel_solution(eps_list,l,m,gamma_left, gamma_thilde_left, gamma_right, gamma_thilde_right, zeta)
+
+plt.figure(figsize=(12, 8))
+
+for eps, sol in solutions.items():
+    for j in range(4):   # plot bare de første 4 komponentene som eksempel
+        plt.plot(sol.x, sol.y[j, :], label=f'eps={eps}, comp={j}')
+
+plt.xlabel('x')
+plt.ylabel('solution components')
+plt.title('Usadel solution components')
+plt.legend()
+plt.grid()
+plt.show()
