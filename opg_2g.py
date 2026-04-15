@@ -14,6 +14,7 @@ def usadel_solution(eps_list,l,m,gamma_left, gamma_thilde_left, gamma_right, gam
         fun = opg2e.make_function(opg2e.better_function, i)
         sol = solve_bvp(fun, bc, x, y)
         solutions.append(sol)
+    return solutions
 
 def gamma_left(epsilon):
     return np.zeros((2,2), dtype=complex)
