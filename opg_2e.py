@@ -15,3 +15,6 @@ def better_function(x_vec, vec, epsilon):
 
 def best_function(x_vec, vec, epsilon):
     return opg2d.usadel_1d(vec, epsilon)
+
+def bestest_function():
+    pass
