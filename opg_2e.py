@@ -18,3 +18,8 @@ def best_function(x_vec, vec, epsilon):
 
 def bestest_function():
     pass
+
+def make_function(f, x_vec, vec, epsilon):
+    def func(x_vec, vec):
+        return f(x_vec, vec, epsilon)
+    return func
