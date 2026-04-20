@@ -11,7 +11,8 @@ def function(x_vec, vec, epsilon):
 
 
 def better_function(x_vec, vec, epsilon):
-    return np.array([opg2d.usadel_eq_1d(v, epsilon) for v in vec])
+    return np.array([opg2d.usadel_eq_1d(vec[:, i], epsilon) 
+                 for i in range(vec.shape[1])]).T
 
 def best_function(x_vec, vec, epsilon):
     return opg2d.usadel_eq_1d(vec, epsilon)

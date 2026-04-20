@@ -38,7 +38,7 @@ solutions = usadel_solution(eps_list,l,m,gamma_left, gamma_thilde_left, gamma_ri
 
 plt.figure(figsize=(12, 8))
 
-for eps, sol in solutions.items():
+for eps, sol in zip(eps_list, solutions):
     for j in range(4):   # plot bare de første 4 komponentene som eksempel
         plt.plot(sol.x, sol.y[j, :], label=f'eps={eps}, comp={j}')
 
