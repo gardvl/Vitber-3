@@ -36,7 +36,7 @@ def j(epsilons, solutions):
             N[i] = np.linalg.inv(np.identity(2, dtype= complex) - gamma[i] @ gamma_thilde[i])
             N_thilde[i] = np.linalg.inv(np.identity(2, dtype= complex) - gamma_thilde[i] @ gamma[i])
             del_N[i] = N[i] @ (omega[i] @ gamma_thilde[i] + gamma[i] @ omega_thilde[i]) @ N[i]
-            del_N_thilde[i] = N_thilde[i] @ (omega_thilde[i] @ gamma[i] + gamma_thilde[i] @ omega[i])
+            del_N_thilde[i] = N_thilde[i] @ (omega_thilde[i] @ gamma[i] + gamma_thilde[i] @ omega[i]) @ N_thilde[i]
             g_hat[i] = Opg_2h.make_4_by_4_matrix(2*N[i]-np.identity(2, dtype=complex), 2*N[i]@gamma[i], -2*N_thilde[i]@gamma_thilde[i], -2*N_thilde[i] + np.identity(2, dtype=complex))
             del_g_hat[i] =  2*Opg_2h.make_4_by_4_matrix(del_N[i], N[i] @ omega[i] + del_N[i] @ gamma[i], -1*N_thilde[i] @ omega_thilde[i] - del_N_thilde[i] @ gamma_thilde[i], -1*del_N_thilde[i])
             current.append(np.trace(p_hat @ (g_hat[i] @ del_g_hat[i] - del_g_hat[i]@ g_hat[i])).real)
