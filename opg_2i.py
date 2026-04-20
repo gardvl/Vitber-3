@@ -10,10 +10,10 @@ from scipy.integrate import solve_bvp
 delta = 0.01
 
 def make_v_minus(epsilon):
-    return np.arctan(-1/(epsilon + 1j*delta))
+    return np.arctanh(-1/(epsilon + 1j*delta))
 
 def make_v_plus(epsilon):
-    return np.arctan(1/(epsilon + 1j*delta))
+    return np.arctanh(1/(epsilon + 1j*delta))
 
 def make_c_minus(epsilon):
     return np.cosh(make_v_minus(epsilon))
@@ -51,7 +51,7 @@ def make_gamma_thilde_right(theta_R):
 l = 1
 m = 101
 zeta = 3
-eps_list = [1,2]
+eps_list = [2]
 theta_l = 0
 theta_r = 0
 
@@ -77,6 +77,8 @@ x_vec = np.linspace(0, l, m)
 løsninger = usadel_solution_general(l, m, zeta, theta_l, theta_r, eps_list, make_gamma_left, make_gamma_thilde_left, make_gamma_right, make_gamma_thilde_right)
 
 densities = make_D_over_D_0(x_vec, eps_list, løsninger)
+
+x_vec = np.linspace(0, l, m)
 
 fig1 = plt.figure(figsize= (12,6))
 plt.title("Densities for each $\\epsilon$")
