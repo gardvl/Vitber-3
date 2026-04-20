@@ -28,6 +28,8 @@ def gamma_right(epsilon):
 
 def gamma_thilde_right(epsilon):
     return np.zeros((2,2), dtype=complex)
+
+'''
 zeta = 3
 
 l = 1
@@ -48,3 +50,5 @@ plt.title('Usadel solution components')
 plt.legend()
 plt.grid()
 plt.show()
+
+'''
