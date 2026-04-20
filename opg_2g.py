@@ -8,11 +8,11 @@ def usadel_solution(eps_list,l,m,gamma_left, gamma_thilde_left, gamma_right, gam
     solutions = []
     x = np.linspace(0,l,m)
     y = np.zeros((32,m))
-    for i in eps_list:
+    for epsilon in eps_list:
         bc = opg2f.make_bc(opg2f.usadel_boundary,
-             i, gamma_left, gamma_thilde_left, gamma_right,
+             epsilon, gamma_left, gamma_thilde_left, gamma_right,
              gamma_thilde_right, l, zeta)
-        fun = opg2e.make_function(opg2e.better_function, i)
+        fun = opg2e.make_function(opg2e.better_function, epsilon)
         sol = solve_bvp(fun, bc, x, y)
         solutions.append(sol)
     return solutions
