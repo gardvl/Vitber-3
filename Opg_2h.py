@@ -46,7 +46,7 @@ def make_D_over_D_0(x_vec, epsilons, solutions):
         densities.append(np.array(density))
     return np.array(densities)
 
-
+'''
 zeta = 3
 
 l = 1
@@ -68,3 +68,4 @@ plt.ylabel("$D/D_0$")
 plt.grid()
 plt.legend()
 plt.show()
+'''
