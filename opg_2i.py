@@ -72,6 +72,9 @@ def usadel_solution_general(l, m, zeta, theta_l, theta_r, eps_list,make_gamma_le
         solutions.append(sol)
     return solutions
 
+
+'''
+
 x_vec = np.linspace(0, l, m)
 
 løsninger = usadel_solution_general(l, m, zeta, theta_l, theta_r, eps_list, make_gamma_left, make_gamma_thilde_left, make_gamma_right, make_gamma_thilde_right)
@@ -90,4 +93,5 @@ plt.grid()
 plt.legend()
 plt.show()
 
+'''
 
