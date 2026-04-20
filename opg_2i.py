@@ -60,12 +60,12 @@ def usadel_solution_general(l, m, zeta, theta_l, theta_r, eps_list,make_gamma_le
     solutions = []
     x = np.linspace(0,l,m)
     y = np.zeros((32,m))
-    for i, epsilon in enumerate(eps_list):
+    for epsilon in eps_list:
         gamma_left = make_gamma_left(theta_l)
         gamma_right = make_gamma_right(theta_r)
         gamma_thilde_left = make_gamma_thilde_left(theta_l)
         gamma_thilde_right = make_gamma_thilde_right(theta_r)
-        bc = opg_2f.make_bc(opg_2f.usadel_boundary, i, gamma_left, gamma_thilde_left, gamma_right,
+        bc = opg_2f.make_bc(opg_2f.usadel_boundary, epsilon, gamma_left, gamma_thilde_left, gamma_right,
              gamma_thilde_right, l, zeta)
         fun = opg_2e.make_function(opg_2e.better_function, epsilon)
         sol = solve_bvp(fun, bc, x, y)
