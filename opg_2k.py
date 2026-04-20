@@ -21,6 +21,7 @@ def usadel_solution_general_2(l, m, zeta, theta_l, theta_r, eps_list,make_gamma_
         fun = opg_2e.make_function(opg_2e.better_function, epsilon)
         sol = solve_bvp(fun, bc, x, y)
         solutions.append(sol)
+        x = sol.x
         y = sol.y
     return solutions
 
@@ -42,8 +43,15 @@ for l in l_list:
     x_vec = np.linspace(0, l, m)
     sol = usadel_solution_general_2(l, m, zeta, theta_l, theta_r, eps_list, opg_2i.make_gamma_left, opg_2i.make_gamma_thilde_left, opg_2i.make_gamma_right, opg_2i.make_gamma_thilde_right)
     solutions.append(sol)
-    x_mid_index = len(sol.x)//2
-    D_over_D0 = opg_2h.make_D_over_D_0(x_vec, eps_list, solutions)
+
+plt.figure()
+
+for l, sol_list in zip(l_list, solutions):
+    x_vec = np.linspace(0, l, m)
+    x_mid_index = len(x_vec) // 2
+
+    D_over_D0 = opg_2h.make_D_over_D_0(x_vec, eps_list, sol_list)
+
     plt.plot(eps_list, D_over_D0[:, x_mid_index], label=f"l = {l}")
 
 plt.xlabel("epsilon")
