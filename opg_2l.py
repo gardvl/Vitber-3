@@ -44,34 +44,34 @@ def j(epsilons, solutions):
     return np.array(currents_list)
 
 
-m = 101
-zeta = 3
-theta_l = 0
-theta_r = 0
+# m = 101
+# zeta = 3
+# theta_l = 0
+# theta_r = 0
 
-eps_list = np.linspace(2, 0, 101)
-l = 1
+# eps_list = np.linspace(2, 0, 101)
+# l = 1
 
 
-solutions = []
+# solutions = []
 
-fig = plt.figure(figsize = (12,6))
+# fig = plt.figure(figsize = (12,6))
 
-x_vec = np.linspace(0, l, m)
-solutions = opg_2k.usadel_solution_general_2(l, m, zeta, theta_l, theta_r, eps_list, opg_2i.make_gamma_left, opg_2i.make_gamma_thilde_left, opg_2i.make_gamma_right, opg_2i.make_gamma_thilde_right)
+# x_vec = np.linspace(0, l, m)
+# solutions = opg_2k.usadel_solution_general_2(l, m, zeta, theta_l, theta_r, eps_list, opg_2i.make_gamma_left, opg_2i.make_gamma_thilde_left, opg_2i.make_gamma_right, opg_2i.make_gamma_thilde_right)
 
-# D_over_D0 = Opg_2h.make_D_over_D_0(x_vec, eps_list, solutions)
-current_densities = j(eps_list, solutions)
+# # D_over_D0 = Opg_2h.make_D_over_D_0(x_vec, eps_list, solutions)
+# current_densities = j(eps_list, solutions)
 
-fig1 = plt.figure(figsize = (12,6))
-eps_index_list = [0, 25, 50, 75, 100]
-plt.title("Current densities of position")
-for i in eps_index_list:
-    plt.plot(x_vec, current_densities[i], label = f"$\\epsilon$ = {eps_list[i]}")
-plt.xlabel("x")
-plt.ylabel("$j$")
-plt.grid()
-plt.legend()
-plt.show()
+# fig1 = plt.figure(figsize = (12,6))
+# eps_index_list = [0, 25, 50, 75, 100]
+# plt.title("Current densities of position")
+# for i in eps_index_list:
+#     plt.plot(x_vec, current_densities[i], label = f"$\\epsilon$ = {eps_list[i]}")
+# plt.xlabel("x")
+# plt.ylabel("$j$")
+# plt.grid()
+# plt.legend()
+# plt.show()
 
-# plt.plot(eps_list, D_over_D0[:, x_mid_index], label=f"l = {l}")
+# # plt.plot(eps_list, D_over_D0[:, x_mid_index], label=f"l = {l}")

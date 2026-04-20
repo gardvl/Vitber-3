@@ -17,8 +17,6 @@ theta_r = 0
 eps_list = np.linspace(2, 0, 101)
 l = 1
 
-fig = plt.figure(figsize = (12,6))
-
 x_vec = np.linspace(0, l, m)
 solutions = opg_2k.usadel_solution_general_2(l, m, zeta, theta_l, theta_r, eps_list, opg_2i.make_gamma_left, opg_2i.make_gamma_thilde_left, opg_2i.make_gamma_right, opg_2i.make_gamma_thilde_right)
 
@@ -28,7 +26,7 @@ middle_index = 50
 
 fig1 = plt.figure(figsize = (12,6))
 plt.plot(eps_list, current_densities[:, 50])
-plt.title("Current densities at $x = \\frac{1}{2}$")
+plt.title("Current densities at x = 1/2")
 plt.title("Current densities of position")
 plt.xlabel("$\\epsilon$")
 plt.ylabel("$j$")
