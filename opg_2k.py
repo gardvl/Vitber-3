@@ -24,7 +24,7 @@ def usadel_solution_general_2(l, m, zeta, theta_l, theta_r, eps_list,make_gamma_
         y = sol.y
     return solutions
 
-
+'''
 m = 101
 zeta = 3
 theta_l = 0
@@ -35,6 +35,8 @@ l_list = [0.5, 1, 2]
 
 
 solutions = []
+
+fig = plt.figure(figsize = (12,6))
 
 for l in l_list:
     x_vec = np.linspace(0, l, m)
@@ -52,4 +54,4 @@ plt.grid()
 plt.show()
 
 
-
+'''
