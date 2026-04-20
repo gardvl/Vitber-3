@@ -1,15 +1,26 @@
 import numpy as np
+import matplotlib.pyplot as plt
+import opg_2i as opg2i
 
-eps_list = np.linspace(0, 2, 101)
-y_guess = np.zeros((32, m))
+m = 101
+zeta = 3
+theta_l = 0
+theta_r = 0
 
-solutions = []
+eps_list = np.linspace(2, 0, 101)
+l_list = [0.5, 1, 2]
 
-for eps in eps_list:
-    bc = opg2f.make_bc(opg2f.usadel_boundary,
-         eps, gamma_left, gamma_thilde_left, gamma_right,
-         gamma_thilde_right, l, zeta)
-    fun = opg2e.make_function(opg2e.better_function, eps)
-    sol = solve_bvp(fun, bc, x_vec, y_guess)
-    solutions.append(sol)
-    y_guess = sol.y
+solutiondict = {}
+
+
+
+for l in l_list:
+    y_guess = np.zeros((32, m))
+    solutions = []
+    for eps in eps_list:
+        sol = opg2i.usadel_solution_general(l, m, zeta, theta_l, theta_r, eps_list, opg2i.make_gamma_left, opg2i.make_gamma_thilde_left, opg2i.make_gamma_right, opg2i.make_gamma_thilde_right)
+        solutions.append(sol)
+        y_guess = sol.y
+    solutiondict[l] = solutions
+
+
