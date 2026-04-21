@@ -27,7 +27,6 @@ middle_index = 50
 fig1 = plt.figure(figsize = (12,6))
 plt.plot(eps_list, current_densities[:, 50])
 plt.title("Current densities at x = 1/2")
-plt.title("Current densities of position")
 plt.xlabel("$\\epsilon$")
 plt.ylabel("$j$")
 plt.grid()
